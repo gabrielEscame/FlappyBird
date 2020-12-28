@@ -8,6 +8,7 @@ const ctx = view.getContext("2d")
 
 const buildings = new ViewElement(ctx, sprites, 110, 370, 552, 204, 0, view.height - 204)
 const floor = new Floor(ctx, sprites, 0, 610, 448, 112, 0, view.height - 112)
+const pipes = new Pipes(ctx, sprites, 0, 169, 52, 400, 220, 0)
 const player = new Bird(ctx, sprites, 0, 0, 33, 24, 10, 50)
 
 const setUp = () => {
@@ -16,7 +17,8 @@ const setUp = () => {
   buildings.draw()
   floor.update()
   floor.draw()
-  player.update()
+  pipes.draw()
+  // player.update()
   player.draw()
   player.jump()
   frames += 1
