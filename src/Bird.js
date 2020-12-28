@@ -35,9 +35,10 @@ class Bird extends ViewElement {
   update() {
     const birdPosition = this.posY + this.height
     const floorPosition = view.height - 112
+    const isBirdAtFloor = birdPosition >= floorPosition
     
-    if (birdPosition >= floorPosition) {
-      this.currentFrame = 1
+    if (isBirdAtFloor) {
+      gameOver = true
       return
     }
 

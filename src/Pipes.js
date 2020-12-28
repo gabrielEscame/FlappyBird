@@ -34,12 +34,6 @@ class Pipes extends ViewElement {
   }
 
   update() {
-    const playerCollision = {
-      up: player.posY,
-      down: player.posY + player.height,
-      front: player.posX + player.width
-    }
-
     const hasCollision = (pipes) => {
       const upperPipePositionY = pipes.posY + this.height
       const bottomPipePositio = pipes.posY + this.pipesGap
@@ -49,11 +43,11 @@ class Pipes extends ViewElement {
 
       if (hasCollisionFront) {
         if (hasCollisionUp) {
-          console.log("cabeça")
+          return true
         }
 
         if (hasCollisionDown) {
-          console.log("Bunda")
+          return true
         }
       }
     }
@@ -73,7 +67,7 @@ class Pipes extends ViewElement {
       const pipePosition = pipes.posX + this.width
       const isPipeOutScreen = pipePosition <= 0
       if (hasCollision(pipes)) {
-
+        gameOver = true
       }
       if (isPipeOutScreen) {
         this.pipesList.shift()
