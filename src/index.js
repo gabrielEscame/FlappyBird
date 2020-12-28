@@ -15,9 +15,10 @@ const setUp = () => {
   ctx.fillStyle = "#70c5ce"
   ctx.fillRect(0, 0, view.width, view.height)
   buildings.draw()
+  pipes.update()
+  pipes.draw()
   floor.update()
   floor.draw()
-  pipes.draw()
   // player.update()
   player.draw()
   player.jump()
