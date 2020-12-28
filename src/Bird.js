@@ -18,6 +18,11 @@ class Bird extends ViewElement {
     ]
   }
   draw() {
+    const keyframeUpdate = frames % 10 === 0
+
+    if (keyframeUpdate) {
+      this.currentFrame = frames % 3
+    }
     const { spriteX, spriteY } = this.keyframes[this.currentFrame]
     this.ctx.drawImage(
       this.img,
@@ -28,14 +33,9 @@ class Bird extends ViewElement {
     )
   }
   update() {
-    const keyframeUpdate = frames % 10 === 0
     const birdPosition = this.posY + this.height
     const floorPosition = view.height - 112
-
-    if (keyframeUpdate) {
-      this.currentFrame = frames % 3
-    }
-
+    
     if (birdPosition >= floorPosition) {
       this.currentFrame = 1
       return
