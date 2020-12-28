@@ -34,6 +34,30 @@ class Pipes extends ViewElement {
   }
 
   update() {
+    const playerCollision = {
+      up: player.posY,
+      down: player.posY + player.height,
+      front: player.posX + player.width
+    }
+
+    const hasCollision = (pipes) => {
+      const upperPipePositionY = pipes.posY + this.height
+      const bottomPipePositio = pipes.posY + this.pipesGap
+      const hasCollisionFront = playerCollision.front >= pipes.posX
+      const hasCollisionUp = playerCollision.up <= upperPipePositionY
+      const hasCollisionDown = playerCollision.down >= bottomPipePositio
+
+      if (hasCollisionFront) {
+        if (hasCollisionUp) {
+          console.log("cabeça")
+        }
+
+        if (hasCollisionDown) {
+          console.log("Bunda")
+        }
+      }
+    }
+
     const hundredFrames = frames % 100 === 0
 
     if (hundredFrames) {
@@ -45,14 +69,17 @@ class Pipes extends ViewElement {
       )
     }
 
-    this.pipesList.forEach(pipe => {
-      const pipePosition = pipe.posX + this.width
+    this.pipesList.forEach(pipes => {
+      const pipePosition = pipes.posX + this.width
       const isPipeOutScreen = pipePosition <= 0
+      if (hasCollision(pipes)) {
+
+      }
       if (isPipeOutScreen) {
         this.pipesList.shift()
-        console.log(this.pipesList)
       }
-      pipe.posX = pipe.posX - 2
+      pipes.posX = pipes.posX - 2
     })
   }
+
 }

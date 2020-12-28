@@ -19,7 +19,7 @@ const setUp = () => {
   pipes.draw()
   floor.update()
   floor.draw()
-  // player.update()
+  player.update()
   player.draw()
   player.jump()
   frames += 1
