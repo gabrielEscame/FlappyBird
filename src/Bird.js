@@ -46,8 +46,16 @@ class Bird extends ViewElement {
     this.posY = this.posY + this.velocity
   }
   jump() {
+    const jumpAction = () => {
+      const playerNextJump = playerCollision.up + this.jumpForce
+      const isJumpingOverScreen = playerNextJump > 0
+      if(isJumpingOverScreen) {
+        this.velocity = - this.jumpForce
+      }
+    }
+    
     window.addEventListener("click", () => {
-      this.velocity = - this.jumpForce
+      jumpAction()
     })
   }
 }

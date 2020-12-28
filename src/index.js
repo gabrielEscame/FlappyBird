@@ -31,6 +31,7 @@ const screens = {
     update: () => {
       player.posY = 50
       player.posX = 10
+      player.velocity = 0
       pipes.pipesList = []
       frames = 0
       gameOver = false
